@@ -19,7 +19,7 @@ export const useAnimation = () => {
                 useNativeDriver: true
             }
         ).start(() => {
-            console.log('termino la animacion');
+            // console.log('termino la animacion');
         })
 
 

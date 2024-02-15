@@ -6,22 +6,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FlatListMenuItem, Props } from '../components/FlatListMenuItem';
 import { MenuItem } from '../interfaces/appInterfaces';
 import { NavigationProp } from '@react-navigation/native';
+import { menuItems } from '../data/menuItems';
 
 
 
-const menuItems:MenuItem[] = [
-  {
-    name:'Animation 101',
-    icon:'cube-outline',
-    component:'Animation101Screen'
-  },
-  {
-    name:'Animation 102',
-    icon:'albums-outline',
-    component:'Animation102Screen'
-  },
 
-]
 export const HomeScreen = ({navigation}:Props) => {
 
   const {top} = useSafeAreaInsets()
