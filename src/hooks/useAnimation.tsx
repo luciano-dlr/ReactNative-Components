@@ -15,42 +15,41 @@ export const useAnimation = () => {
             opacity,
             {
                 toValue: 1,
-                duration: 300,
+                duration: 600,
                 useNativeDriver: true
             }
         ).start(() => {
             // console.log('termino la animacion');
         })
 
-
-    
-
     }
-
 
     const fadeOut = () => {
         Animated.timing(
             opacity,
             {
                 toValue: 0,
-                duration: 300,
+                duration: 600,
                 useNativeDriver: true
             }
         ).start()
+
         Animated.timing(
-            position, {
-            toValue: -300,
+            position2, {
+            toValue: 300,
             duration: 1500,
             useNativeDriver: true,
             easing: Easing.bounce,
         }
         ).start()
+       
     }
 
 
     const startMovingPosition = (initPosition:number,duration:number = 300 ) => {
 
         position.setValue(-300)
+        position2.setValue(0)
 
         
         Animated.timing(
@@ -80,8 +79,6 @@ export const useAnimation = () => {
     }
 
    
-
-
 
     return {
         opacity,

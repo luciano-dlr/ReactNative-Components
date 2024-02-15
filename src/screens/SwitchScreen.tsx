@@ -1,26 +1,75 @@
 import React, { useState } from 'react'
-import { Platform, Switch, View } from 'react-native'
+import { Platform, StyleSheet, Switch, Text, View } from 'react-native'
+import { HeaderTitle } from '../components/HeaderTitle';
+import { CustomSwitch } from '../components/CustomSwitch';
 
 export const SwitchScreen = () => {
 
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(!isEnabled);
+  const [state, setState] = useState({
+    isActive: true,
+    isHungry: false,
+    isHappy: true
+  })
 
+  const { isActive, isHungry, isHappy } = state;
+
+
+  const onChange = (value: boolean, field: string) => {
+    setState({
+      ...state,
+      [field]: value
+    })
+  }
 
 
   return (
-    <View style={{marginTop:20}}>
 
-       <Switch
-        trackColor={{false: 'grey', true: '#5856D6'}}
-        thumbColor={(Platform.OS === 'android') ? '#5856D6' : ''}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-        
-      />
-      
+    <View style={{ paddingHorizontal: 8, flex: 1, backgroundColor: '#CCCCCC' }}>
+
+      <HeaderTitle title='Switches' />
+
+      <View style={styles.switchRow}>
+        <Text style={styles.switchText}>is Active</Text>
+        <CustomSwitch isOn={isActive} onChange={(value) => onChange(value, 'isActive')} />
+      </View>
+
+      <View style={styles.switchRow}>
+        <Text style={styles.switchText}>is Active</Text>
+        <CustomSwitch isOn={isHungry} onChange={(value) => onChange(value, 'isHungry')} />
+      </View>
+
+      <View style={styles.switchRow}>
+        <Text style={styles.switchText}>is Active</Text>
+        <CustomSwitch isOn={isHappy} onChange={(value) => onChange(value, 'isHappy')} />
+      </View>
+
+
+      <Text style={styles.switchText}>
+        {JSON.stringify(state, null, 5)}
+      </Text>
+
     </View>
   )
 }
+
+
+const styles = StyleSheet.create({
+  switchRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#729E72',
+    padding: 10,
+    margin: 10,
+    borderRadius: 8,
+
+
+  },
+  switchText: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+
+});
 
 

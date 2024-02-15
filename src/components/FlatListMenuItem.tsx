@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { MenuItem } from '../interfaces/appInterfaces';
 import Icon from "react-native-vector-icons/Ionicons";
-import { useNavigation } from '@react-navigation/native';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 
@@ -11,7 +11,10 @@ import { StackNavigationProp } from '@react-navigation/stack';
 export interface Props {
     menuItem: MenuItem,
     navigation?: StackNavigationProp<any, any>
+    // navigation?: ScreenComponentType<ParamListBase, "HomeScreen">
 }
+
+// ScreenComponentType<ParamListBase, "HomeScreen">
 
 export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props) => {
 
@@ -30,7 +33,7 @@ export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props)
 
                 <Icon
                     name={menuItem.icon}
-                    color='gray'
+                    color='#5856D6'
                     size={30}
                 />
 
@@ -42,7 +45,7 @@ export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props)
 
                 <Icon
                     name='chevron-forward-outline'
-                    color='gray'
+                    color='#5856D6'
                     size={30}
                 />
 
@@ -63,7 +66,9 @@ const styles = StyleSheet.create({
     },
     itemText: {
         marginLeft: 10,
-        fontSize: 18
+        fontSize: 20,
+        color: 'black',
+        fontWeight:'600'
     }
 
 });
