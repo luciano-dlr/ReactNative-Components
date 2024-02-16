@@ -21,5 +21,25 @@ export const menuItems:MenuItem[] = [
       icon:'alert-circle-outline',
       component:'AlertScreen'
     },
+    {
+      name:'Text Input',
+      icon:'create-outline',
+      component:'TextInputScreen'
+    },
+    {
+      name:'Pull to Refresh',
+      icon:'refresh-circle-outline',
+      component:'PullToRefreshScreen'
+    },
+    {
+      name:'Section List',
+      icon:'list-circle-outline',
+      component:'CustomSectionListScreen'
+    },
+    {
+      name:'Modal Screen',
+      icon:'copy-outline',
+      component:'ModalScreen'
+    },
   
   ]

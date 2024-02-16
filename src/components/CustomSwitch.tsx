@@ -4,7 +4,7 @@ import { Switch } from 'react-native';
 
 interface Props {
     isOn:boolean
-    onChange:(value:boolean) => void;
+    onChange: (value: boolean) => void;
 
 }
 

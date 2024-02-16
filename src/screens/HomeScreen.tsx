@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FlatListMenuItem, Props } from '../components/FlatListMenuItem';
 import { menuItems } from '../data/menuItems';
 import { HeaderTitle } from '../components/HeaderTitle';
+import { ItemSeparator } from '../components/ItemSeparator';
 
 
 
@@ -16,15 +17,6 @@ export const HomeScreen = ({navigation}:Props) => {
 
 
 
-  const itemSeparator = () => {
-    return(
-      <View style={{
-        borderBottomWidth:1,
-        marginVertical:10,
-        opacity:0.4
-      }}/>
-    )
-  }
 
 
 
@@ -39,7 +31,7 @@ export const HomeScreen = ({navigation}:Props) => {
       renderItem={({item})=> <FlatListMenuItem menuItem={item} navigation={navigation}/>}
       keyExtractor={(item)=> item.name}
       ListHeaderComponent={()=> <HeaderTitle title='Components'/>}
-      ItemSeparatorComponent={() =>  itemSeparator()}
+      ItemSeparatorComponent={() =>  <ItemSeparator/>}
     />
 
    </View>
