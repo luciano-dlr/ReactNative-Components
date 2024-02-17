@@ -51,7 +51,7 @@ export const CustomSectionListScreen = () => {
             stickySectionHeadersEnabled={true}
             renderSectionHeader={({section})=>( 
             
-                <View style={{backgroundColor:'#CCCCCC'}}>
+                <View style={{backgroundColor:'white'}}>
                     <HeaderTitle title={section.casa}/>
 
                 </View>

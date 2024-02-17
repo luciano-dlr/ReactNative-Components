@@ -59,27 +59,34 @@ export const ModalScreen = () => {
       >
         <View style={{
           flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          justifyContent:'center',
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          justifyContent: 'center',
         }}>
 
           <View style={{
-            alignItems:'center',
-            backgroundColor:'white',
-            paddingBottom:80,
-            margin:30,
-            borderRadius:14
-            
-            }}>
+            alignItems: 'center',
+            backgroundColor: 'white',
+            paddingBottom: 80,
+            margin: 30,
+            borderRadius: 14,
+            shadowOpacity: 0.25,
+            elevation: 40,
+            shadowColor: '#5856D6',
+            shadowOffset: {
+              width: 0,
+              height: 40
+            }
+
+          }}>
 
             <HeaderTitle title='Modal' />
             <Text>Cuerpo del modal</Text>
 
-          <TouchableOpacity style={styles2.btn} onPress={() => setIsVisible2(false)}>
+            <TouchableOpacity style={styles2.btn} onPress={() => setIsVisible2(false)}>
 
-            <Text style={styles2.txt}>Close Modal 2</Text>
+              <Text style={styles2.txt}>Close Modal 2</Text>
 
-          </TouchableOpacity>
+            </TouchableOpacity>
           </View>
 
 
