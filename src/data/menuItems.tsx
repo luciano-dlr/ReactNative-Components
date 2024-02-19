@@ -46,5 +46,10 @@ export const menuItems:MenuItem[] = [
       icon:'download-outline',
       component:'InfiniteScrollScreen'
     },
+    {
+      name:'Slides Tutorial',
+      icon:'information-circle-outline',
+      component:'SlidesScreen'
+    },
   
   ]
