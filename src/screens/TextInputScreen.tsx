@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { CustomSwitch } from '../components/CustomSwitch'
 import { StyleSheet, TextInput, View, KeyboardAvoidingView, Platform, ScrollView, Keyboard, TouchableWithoutFeedback, Switch } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { Text } from 'react-native'
 import { useForm } from '../hooks/useForm'
+import { ThemeContext } from '../context/theme/ThemeContext'
 
 
 export const TextInputScreen = () => {
+
+  const {theme:{colors}} = useContext(ThemeContext)
 
 
     const { onChange, form } = useForm({
@@ -46,12 +49,12 @@ export const TextInputScreen = () => {
 
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
-                    <View style={{ backgroundColor: '#CCCCCC', flex: 1, paddingHorizontal: 10 }}>
+                    <View style={{ backgroundColor: colors.background, flex: 1, paddingHorizontal: 10 }}>
 
                         <HeaderTitle title='Text Inputs' />
 
                         <TextInput
-                            style={stylesScreen.inputStyle}
+                            style={{...stylesScreen.inputStyle,backgroundColor:colors.card}}
                             placeholder='Ingrese su Nombre'
                             autoCorrect={false}
                             autoCapitalize='words'
@@ -59,7 +62,7 @@ export const TextInputScreen = () => {
                         />
 
                         <TextInput
-                            style={stylesScreen.inputStyle}
+                            style={{...stylesScreen.inputStyle,backgroundColor:colors.card}}
                             placeholder='Email'
                             autoCorrect={false}
                             autoCapitalize='none'
@@ -69,10 +72,7 @@ export const TextInputScreen = () => {
                             keyboardAppearance='dark'
                         />
 
-                      
-
-                    
-                        <View style={stylesScreen.switchRow}>
+                        <View style={{...stylesScreen.switchRow,backgroundColor:colors.card}}>
 
                             <Text style={stylesScreen.switchText}>Subscribirse</Text>
 
@@ -83,8 +83,9 @@ export const TextInputScreen = () => {
                           
                         </View>
 
-                        <HeaderTitle title={JSON.stringify(form, null, 4)} />
-                        <HeaderTitle title={JSON.stringify(form, null, 4)} />
+                       
+                        <Text style={{...stylesScreen.txtResult,color:colors.text}}>{JSON.stringify(form, null, 4)}</Text>
+                       
 
                         <TextInput
                             style={stylesScreen.inputStyle}
@@ -114,7 +115,7 @@ const stylesScreen = StyleSheet.create({
         paddingHorizontal: 10,
         backgroundColor: 'rgba(0,0,0,0.3)',
         borderColor: 'rgba(0,0,0,0.5)',
-        color: 'white',
+        
         marginVertical: 10,
         fontWeight: '600',
         fontSize: 18
@@ -132,13 +133,17 @@ const stylesScreen = StyleSheet.create({
         paddingHorizontal: 10,
         marginVertical: 8,
         
-    
-    
       },
       switchText: {
         fontSize: 19,
         fontWeight: '600',
+        color:'black'
       },
+      txtResult:{
+        fontSize:25,
+        fontWeight:'700',
+        paddingVertical:100
+      }
 
 });
 

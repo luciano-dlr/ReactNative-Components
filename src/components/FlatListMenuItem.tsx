@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { MenuItem } from '../interfaces/appInterfaces';
+
 import Icon from "react-native-vector-icons/Ionicons";
-import { ParamListBase, useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { HomeScreenProps } from '../screens/HomeScreen';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 
 
-export interface Props {
-    menuItem: MenuItem,
-    navigation?: StackNavigationProp<any, any>
-    // navigation?: ScreenComponentType<ParamListBase, "HomeScreen">
-}
 
-// ScreenComponentType<ParamListBase, "HomeScreen">
 
-export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props) => {
+export const FlatListMenuItem: React.FC<HomeScreenProps> = ({ menuItem, navigation }) => {
 
-    // const navigation = useNavigation()
+   
+    const {theme:{colors}} = useContext(ThemeContext)
+
+    
 
 
 
@@ -33,11 +29,11 @@ export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props)
 
                 <Icon
                     name={menuItem.icon}
-                    color='#5856D6'
+                    color={colors.primary}
                     size={30}
                 />
 
-                <Text style={styles.itemText}>{menuItem.name}  </Text>
+                <Text style={{...styles.itemText,color:colors.text}}>{menuItem.name}  </Text>
            </View>
 
 
@@ -45,7 +41,7 @@ export const FlatListMenuItem:React.FC<Props> = ({ menuItem,navigation }: Props)
 
                 <Icon
                     name='chevron-forward-outline'
-                    color='#5856D6'
+                    color={colors.primary}
                     size={30}
                 />
 
@@ -67,7 +63,7 @@ const styles = StyleSheet.create({
     itemText: {
         marginLeft: 10,
         fontSize: 20,
-        color: 'black',
+       
         fontWeight:'600'
     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Animated, Button, Image, StyleSheet,TouchableOpacity } from 'react-native';
 import { ImageSourcePropType, View, SafeAreaView, Text, Dimensions } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useAnimation } from '../hooks/useAnimation';
 import { useNavigation } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 
 
@@ -49,6 +50,9 @@ export const SlidesScreen = ({navigation}:Props) => {
   const {opacity,fadeIn} = useAnimation()
   // const navigation = useNavigation();
 
+  const {theme:{colors}} = useContext(ThemeContext)
+  
+
   useEffect(() => {
 
     if (activeIndex === 2) {
@@ -64,7 +68,7 @@ export const SlidesScreen = ({navigation}:Props) => {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.background,
         borderRadius: 5,
         padding: 40,
         justifyContent: 'center'
@@ -77,8 +81,8 @@ export const SlidesScreen = ({navigation}:Props) => {
             resizeMode: 'center'
           }}
         />
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.subTitle}>{item.desc}</Text>
+        <Text style={{...styles.title,color:colors.primary}}>{item.title}</Text>
+        <Text style={{...styles.subTitle,color:colors.text}}>{item.desc}</Text>
 
 
       </View>
@@ -110,7 +114,7 @@ export const SlidesScreen = ({navigation}:Props) => {
             width: 10,
             height: 10,
             borderRadius: 20,
-            backgroundColor: '#5856D6'
+            backgroundColor: colors.primary
           }}
 
         />
@@ -124,12 +128,12 @@ export const SlidesScreen = ({navigation}:Props) => {
               }} >
 
             <TouchableOpacity 
-            style={styles.btnNext} 
+            style={{...styles.btnNext,backgroundColor:colors.primary}} 
             onPress={()=> navigation.navigate('HomeScreen')}
             >
 
-              <Text style={styles.btnNextTxt}>Entrar</Text>
-              <Icon name="chevron-forward-outline" color={'white'} size={20}/>
+              <Text style={{...styles.btnNextTxt,color:colors.background}}>Entrar</Text>
+              <Icon name="chevron-forward-outline" color={colors.background} size={20}/>
 
             </TouchableOpacity>
 

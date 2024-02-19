@@ -15,21 +15,11 @@ export const InfiniteScrollScreen = () => {
       style={{
         width:'100%',
         height:400,
-      
       }}
       />
       
       )
     }
-
-
-    // <Image 
-    // source={{uri:`https://picsum.photos/id/${uri}/500/400`}}
-    // style={{
-    //   width:'100%',
-    //   height:400
-    // }}
-    // />
 
   const loadMore = () => {
 
@@ -49,7 +39,7 @@ export const InfiniteScrollScreen = () => {
 
   return (
     <View style={{flex:1}}>
-      {/* <HeaderTitle title='Inifinite Scroll' /> */}
+     
 
       <FlatList
         data={numbers}

@@ -1,24 +1,28 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../theme/appTheme'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { Modal } from 'react-native'
+import { ThemeContext } from '../context/theme/ThemeContext'
 
 
 export const ModalScreen = () => {
+
+  const {theme:{colors}} = useContext(ThemeContext)
+
 
   const [isVisible, setIsVisible] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
 
 
   return (
-    <View style={styles.globalMargin}>
+    <View style={{...styles.globalMargin,backgroundColor:colors.background}}>
 
       <HeaderTitle title='Modal' />
 
-      <TouchableOpacity style={styles2.btn} onPress={() => setIsVisible(true)}>
+      <TouchableOpacity style={{...styles2.btn,backgroundColor:colors.card}} onPress={() => setIsVisible(true)}>
 
-        <Text style={styles2.txt}>Open Modal</Text>
+        <Text style={{...styles2.txt,color:'black'}}>Open Modal</Text>
 
       </TouchableOpacity>
 
@@ -36,7 +40,7 @@ export const ModalScreen = () => {
         <View style={{
           flex: 1,
           marginTop: 400,
-          backgroundColor: 'rgba(0,0,0,0.4)',
+          backgroundColor: colors.primary,
           borderTopEndRadius: 30,
           borderTopLeftRadius: 30,
         }}>
@@ -71,7 +75,7 @@ export const ModalScreen = () => {
             borderRadius: 14,
             shadowOpacity: 0.25,
             elevation: 40,
-            shadowColor: '#5856D6',
+            shadowColor: colors.primary,
             shadowOffset: {
               width: 0,
               height: 40
@@ -79,7 +83,9 @@ export const ModalScreen = () => {
 
           }}>
 
-            <HeaderTitle title='Modal' />
+            
+
+            <Text style={{fontSize:40,paddingVertical:30,fontWeight:'700',color:'black'}}>Modal</Text>
             <Text>Cuerpo del modal</Text>
 
             <TouchableOpacity style={styles2.btn} onPress={() => setIsVisible2(false)}>

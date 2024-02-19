@@ -1,11 +1,15 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Animated, Easing, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useAnimation } from '../hooks/useAnimation'
+import { ThemeContext } from '../context/theme/ThemeContext'
 
 
 export const Animation101Screen = () => {
 
-    const {opacity,position,fadeIn,fadeOut,startMovingPosition,position2,finishMovingPosition} = useAnimation()
+    const {opacity,position,fadeIn,fadeOut,startMovingPosition,position2} = useAnimation()
+
+    const {theme:{colors}} = useContext(ThemeContext)
+
 
     const handleFadeIn = () => {
         fadeIn();
@@ -20,10 +24,11 @@ export const Animation101Screen = () => {
     // <Nachovski></Nachovski> sensei original 
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container,backgroundColor:colors.background}}>
             <Animated.View style={{
                 ...styles.purpleBox,
                 opacity,
+                backgroundColor:colors.primary,
                 transform:[{
                     translateY:position,
                     
@@ -38,7 +43,7 @@ export const Animation101Screen = () => {
             }} />
 
 
-            <View style={styles.btnContainer}>
+            <View style={{...styles.btnContainer, backgroundColor:colors.background}}>
                 <TouchableOpacity
 
                     onPress={handleFadeIn}
@@ -72,7 +77,6 @@ const styles = StyleSheet.create({
         backgroundColor:'#CCCCCC'
     },
     purpleBox: {
-        backgroundColor: '#5856D6',
         width: 220,
         height: 200,
         borderRadius:12

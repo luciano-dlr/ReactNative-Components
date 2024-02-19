@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from '../screens/HomeScreen';
+
 import { Animation101Screen } from '../screens/Animation101Screen';
 import { Animation102Screen } from '../screens/Animation102Screen';
 import { SwitchScreen } from '../screens/SwitchScreen';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { AlertScreen } from '../screens/AlertScreen';
 import { TextInputScreen } from '../screens/TextInputScreen';
 import { PullToRefreshScreen } from '../screens/PullToRefreshScreen';
@@ -13,20 +13,34 @@ import { CustomSectionListScreen } from '../screens/CustomSectionListScreen';
 import { ModalScreen } from '../screens/ModalScreen';
 import { InfiniteScrollScreen } from '../screens/InfiniteScrollScreen';
 import { SlidesScreen } from '../screens/SlidesScreen';
+import { ChangeThemeScreen } from '../screens/ChangeThemeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { HomeScreen } from '../screens/HomeScreen';
+import { ThemeContext } from '../context/theme/ThemeContext';
+import { lightTheme } from '../context/theme/ThemeReducer';
+
+
 
 const Stack = createStackNavigator();
 
 
 
 export const Navigation = () => {
+
+  const {theme} = useContext(ThemeContext)
+
   return (
-    <>
+    <View style={{flex:1,backgroundColor:theme.colors.background}}>
+
+    <NavigationContainer
+    theme={theme}
+    >
       <StatusBar barStyle={"light-content"} backgroundColor="black" translucent />
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           cardStyle:{
-            backgroundColor: 'white'
+            // backgroundColor: 'white'
           }
         }}
       >
@@ -41,8 +55,10 @@ export const Navigation = () => {
         <Stack.Screen name="ModalScreen" component={ModalScreen} />
         <Stack.Screen name="InfiniteScrollScreen" component={InfiniteScrollScreen} />
         <Stack.Screen name="SlidesScreen" component={SlidesScreen} />
+        <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
       </Stack.Navigator>
-    </>
+    </NavigationContainer>
+    </View>
   )
 }
 

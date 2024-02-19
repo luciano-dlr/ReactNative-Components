@@ -51,5 +51,10 @@ export const menuItems:MenuItem[] = [
       icon:'information-circle-outline',
       component:'SlidesScreen'
     },
+    {
+      name:'Dark / Light mode',
+      icon:'contrast-outline',
+      component:'ChangeThemeScreen'
+    },
   
   ]
